@@ -1,0 +1,11 @@
+{
+  "name": "functions",
+  "version": "1.0.0",
+  "description": "",
+  "main": "send-mail.js",
+  "scripts": {},
+  "author": "",
+  "dependencies": {
+    "nodemailer": "^6.4.2"
+  }
+}

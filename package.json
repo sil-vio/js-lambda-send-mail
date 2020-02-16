@@ -1,0 +1,9 @@
+{
+	"name": "js-lamba-send-mail",
+	"scripts": {
+		"functions": "cd functions/send-mail && npm ci"
+	},
+	"dependencies": {
+		"nodemailer": "^6.4.2"
+	}
+}
