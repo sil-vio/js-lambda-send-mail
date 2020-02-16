@@ -3,7 +3,7 @@ var nodemailer = require('nodemailer');
 const mail = process.env.MAIL;
 const pwd = process.env.PWD;
 
-var transport = nodemailer.createTransport("SMTP", {
+var transport = nodemailer.createTransport({
 	service: "hotmail",
 	auth: {
 		user: mail,
