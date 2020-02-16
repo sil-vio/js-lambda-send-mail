@@ -39,7 +39,7 @@ exports.handler = async (event, context, callback) => {
 	};
 
 	// send mail with defined transport object
-	transporter.sendMail(mailOptions, function (error, info) {
+	transport.sendMail(mailOptions, function (error, info) {
 		if (error) {
 			return console.log(error);
 		}
