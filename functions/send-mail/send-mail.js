@@ -1,7 +1,7 @@
 var nodemailer = require('nodemailer');
 
 const mail = process.env.MAIL;
-const pwd = process.env.PWD;
+const pwd = process.env.MAIL_PWD;
 console.log('mail ', mail);
 console.log('pwd ', pwd);
 
