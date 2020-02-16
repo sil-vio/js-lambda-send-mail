@@ -2,6 +2,8 @@ var nodemailer = require('nodemailer');
 
 const mail = process.env.MAIL;
 const pwd = process.env.PWD;
+console.log('mail ', mail);
+console.log('pwd ', pwd);
 
 var transport = nodemailer.createTransport({
 	service: "hotmail",
@@ -30,7 +32,7 @@ exports.handler = async (event, context, callback) => {
 	}
 
 	// setup e-mail data, even with unicode symbols
-	var mailOptions = {
+	const mailOptions = {
 		from: mail, // sender address (who sends)
 		to: mail, // list of receivers (who receives)
 		subject: 'Nuovo Messaggio : ', // Subject line
@@ -39,16 +41,22 @@ exports.handler = async (event, context, callback) => {
 	};
 
 	// send mail with defined transport object
-	transport.sendMail(mailOptions, function (error, info) {
-		if (error) {
-			return console.log(error);
-		}
+	try {
+		let info = await transport.sendMail(mailOptions);
+		console.log('Message sent: ', info);
+		return {
+			headers,
+			statusCode: 201,
+			body: `message sent`
+		};
+	} catch (err) {
+		console.log("Errore in invio messaggio : ", err);
+		return {
+			headers,
+			statusCode: 500,
+			body: `message not sent`
+		};
+	}
 
-		console.log('Message sent: ' + info.response);
-	});
-	return {
-		headers,
-		statusCode: 201,
-		body: `message saved`
-	};
+
 }
